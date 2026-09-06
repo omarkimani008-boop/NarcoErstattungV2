@@ -26,7 +26,7 @@ const DiscordGate = ({ children }: { children: React.ReactNode }) => {
           sessionStorage.setItem("nc_unlocked", "1");
           setUnlocked(true);
         } else if (data?.reason === "not_allowed") {
-          setError(`Discord-ID ${data.discordId} ist nicht freigeschaltet.`);
+          setError(`Discord-ID ${data.discordId} ist nicht cool genug! LG Marjanovic.`);
         } else if (data?.reason) {
           setError(`Fehler: ${data.reason}`);
         } else {
