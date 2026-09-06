@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import PasswordGate from "./components/PasswordGate";
+import DiscordGate from "./components/DiscordGate";
 
 const queryClient = new QueryClient();
 
@@ -14,14 +14,14 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <PasswordGate>
+      <DiscordGate>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
-      </PasswordGate>
+      </DiscordGate>
     </TooltipProvider>
   </QueryClientProvider>
 );
