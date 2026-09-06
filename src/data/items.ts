@@ -1915,4 +1915,5 @@ export const items = [
   { id: "blauflossenthunfisch", name: "Blauflossen-Thunfisch" },
   { id: "goldfisch", name: "Goldfisch" },
   { id: "weisser_stoer", name: "Weißer Stör" },
+  { id: "test01", name: "Test01" },
 ];
