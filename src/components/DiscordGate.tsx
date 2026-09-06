@@ -25,8 +25,12 @@ const DiscordGate = ({ children }: { children: React.ReactNode }) => {
         if (!fnError && data?.ok) {
           sessionStorage.setItem("nc_unlocked", "1");
           setUnlocked(true);
+        } else if (data?.reason === "not_allowed") {
+          setError(`Discord-ID ${data.discordId} ist nicht freigeschaltet.`);
+        } else if (data?.reason) {
+          setError(`Fehler: ${data.reason}`);
         } else {
-          setError("Dieser Discord-Account ist nicht freigeschaltet.");
+          setError("Anmeldung fehlgeschlagen.");
         }
       })
       .catch(() => setError("Anmeldung fehlgeschlagen."))

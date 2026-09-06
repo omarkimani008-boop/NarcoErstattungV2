@@ -31,6 +31,8 @@ Deno.serve(async (req) => {
     })
 
     if (!tokenRes.ok) {
+      const detail = await tokenRes.text()
+      console.error('discord token exchange failed', tokenRes.status, detail)
       return new Response(JSON.stringify({ ok: false, reason: 'token_exchange_failed' }), {
         status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -64,10 +66,10 @@ Deno.serve(async (req) => {
       .maybeSingle()
 
     if (!allowed) {
-      return new Response(JSON.stringify({ ok: false, reason: 'not_allowed' }), {
-        status: 200,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      })
+      return new Response(
+        JSON.stringify({ ok: false, reason: 'not_allowed', discordId: discordUser.id }),
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
     }
 
     return new Response(
